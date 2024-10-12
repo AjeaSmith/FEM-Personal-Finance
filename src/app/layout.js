@@ -14,10 +14,10 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body
-				className={`${publicSans.className} bg-beige-100 text-grey-900 xl:main-grid w-full h-screen flex flex-row relative`}
+				className={`${publicSans.className} bg-beige-100 text-grey-900 flex h-screen`}
 			>
 				<Sidebar />
-				<section className="px-7">{children}</section>
+				<section className="flex-grow">{children}</section>
 				{/* <Bottombar /> */}
 			</body>
 		</html>
