@@ -42,10 +42,10 @@ export default function Sidebar() {
 							return (
 								<li
 									key={i}
-									className={`text-grey-300 text-nowrap border-l-[5px] py-4 mr-4 hover:text-white  ${
+									className={`text-grey-300 text-nowrap border-l-[5px] py-4 mr-4   ${
 										pathname === item.link
 											? "bg-white text-grey-900 border-green rounded-r-xl"
-											: "border-transparent"
+											: "border-transparent hover:text-white"
 									}`}
 								>
 									<Link
@@ -93,7 +93,9 @@ export default function Sidebar() {
 							fill="#b3b3b3"
 						/>
 					</svg>
-					<h3 className={`text-nowrap text-h3 duration-200 ${!open && "hidden"}`}>
+					<h3
+						className={`text-nowrap text-h3 duration-200 ${!open && "hidden"}`}
+					>
 						Minimize Menu
 					</h3>
 				</button>
