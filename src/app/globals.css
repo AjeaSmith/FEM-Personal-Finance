@@ -13,15 +13,13 @@
 		--foreground: #ededed;
 	}
 }
-
-body {
-	color: var(--foreground);
-	background: var(--background);
-}
-
 @layer utilities {
 	.main-grid {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 	}
+}
+body {
+	display: grid;
+	grid-template-columns: auto 1fr;
 }

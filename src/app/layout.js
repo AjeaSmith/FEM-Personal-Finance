@@ -1,7 +1,6 @@
 import { Public_Sans } from "next/font/google";
 import "./globals.css";
-import Sidebar from "../components/Sidebar";
-import Bottombar from "../components/Bottombar";
+import Navbar from "@/components/Navbar";
 
 const publicSans = Public_Sans({ weight: ["400", "700"], subsets: ["latin"] });
 
@@ -14,11 +13,10 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body
-				className={`${publicSans.className} bg-beige-100 text-grey-900 flex h-screen`}
+				className={`${publicSans.className} bg-beige-100 text-grey-900 grid grid-cols-[1fr] xl:grid-cols-[auto,1fr] min-h-screen`}
 			>
-				<Sidebar />
-				<section className="flex-grow">{children}</section>
-				{/* <Bottombar /> */}
+				<Navbar />
+				<main>{children}</main>
 			</body>
 		</html>
 	);
