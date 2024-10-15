@@ -29,12 +29,13 @@ export default async function page() {
 			<section>
 				<div>
 					{/* Pots */}
-					<div>
-						<div>
-							<span>Pots</span>
-							<span>
+					<div className="bg-white p-5 rounded-xl">
+						<div className="flex justify-between">
+							<span className="text-h2">Pots</span>
+							<span className="flex items-center text-grey-500 text-body-14">
 								See Details{" "}
 								<svg
+									className="ml-4"
 									fill="none"
 									height="11"
 									viewBox="0 0 6 11"
@@ -50,7 +51,7 @@ export default async function page() {
 						</div>
 						<div>
 							{/* Total saved div */}
-							<div>
+							<div className="bg-beige-100 rounded-xl flex gap-4 items-center p-5 my-5">
 								<svg
 									fill="none"
 									height="36"
@@ -64,23 +65,26 @@ export default async function page() {
 									/>
 								</svg>
 								<span>
-									<p>Total Saved</p>
-									<span>$850</span>
+									<p className="text-body-14">Total Saved</p>
+									<p className="text-h1 mt-[11px]">$850</p>
 								</span>
 							</div>
-							<div>
-								<p>
-									Savings<span>$159</span>
-								</p>
-								<p>
-									Gift<span>$40</span>
-								</p>
-								<p>
-									Concert Ticket<span>$110</span>
-								</p>
-								<p>
-									Savings<span>$159</span>
-								</p>
+							<div className="text-body-12 text-grey-500 grid grid-cols-2 gap-4">
+								{data.pots.map((pot, i) => (
+									<div className="flex" key={i}>
+										<div
+											style={{ borderColor: pot.theme }}
+											className={`border-l-4
+											} rounded-t-xl rounded-b-xl mr-4`}
+										/>
+										<p className="flex flex-col">
+											<span className="mb-1">{pot.name}</span>
+											<span className="text-body-14-bold text-grey-900">
+												{formatMoney(pot.total)}
+											</span>
+										</p>
+									</div>
+								))}
 							</div>
 						</div>
 					</div>
