@@ -23,3 +23,7 @@ body {
 	display: grid;
 	grid-template-columns: auto 1fr;
 }
+
+li:last-child {
+	border-bottom: 0;
+}

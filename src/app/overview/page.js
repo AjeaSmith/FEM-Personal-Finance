@@ -1,10 +1,16 @@
+import SectionTitle from "@/components/SectionTitle";
+import BudgetChart from "@/components/ui/BudgetChart";
+import { formatDate } from "@/utils/formateDate";
 import { formatMoney } from "@/utils/formatMoney";
 import { promises as fs } from "fs";
+import Image from "next/image";
+
 export default async function page() {
-	const file = await fs.readFile(process.cwd() + "/src/app/data.json", "utf8");
+	const file = await fs.readFile(process.cwd() + "/src/data.json", "utf8");
 	const data = JSON.parse(file);
 
 	// TODO: Make Responsive (layout tab/mob/desk)
+	// TODO: Make budget list a reusable component
 	return (
 		<section className="p-4 md:p-10">
 			<h1 className="text-h1 pb-8">Overview</h1>
@@ -30,25 +36,7 @@ export default async function page() {
 				<div>
 					{/* Pots */}
 					<div className="bg-white p-5 rounded-xl">
-						<div className="flex justify-between">
-							<span className="text-h2">Pots</span>
-							<span className="flex items-center text-grey-500 text-body-14">
-								See Details{" "}
-								<svg
-									className="ml-4"
-									fill="none"
-									height="11"
-									viewBox="0 0 6 11"
-									width="6"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path
-										d="m.853506.146465 5.000004 5.000005c.04648.04643.08336.10158.10853.16228.02516.06069.03811.12576.03811.19147 0 .0657-.01295.13077-.03811.19147-.02517.06069-.06205.11584-.10853.16228l-5.000004 5.00003c-.069927.07-.159054.1177-.256097.137-.097042.0193-.197637.0094-.289048-.0285-.091412-.0378-.16953-.102-.2244652-.1843-.0549354-.0823-.08421767-.179-.08413981-.278l-.00000043-9.999984c-.00007788-.098949.02920444-.195695.08413984-.277992.0549356-.082297.1330536-.1464431.2244646-.1843193.091412-.03787611.192007-.04777907.289049-.02845381.097042.01932521.186169.06700801.256097.13701411z"
-										fill="#696868"
-									/>
-								</svg>
-							</span>
-						</div>
+						<SectionTitle title="Pots" moreTitle="See Details" />
 						<div>
 							{/* Total saved div */}
 							<div className="bg-beige-100 rounded-xl flex gap-4 items-center p-5 my-5">
@@ -89,19 +77,55 @@ export default async function page() {
 						</div>
 					</div>
 					{/* transactions */}
-					<div>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam
-						explicabo molestias soluta fugit! Debitis quod maxime nemo sed
-						quisquam eum reiciendis ratione sint explicabo neque!
+					<div className="bg-white p-5 rounded-xl mt-4">
+						<SectionTitle title="Transactions" moreTitle="View All" />
+						<ul>
+							{data.transactions.map((trans, i) => {
+								const sign = Math.sign(trans.amount);
+								return (
+									<li
+										key={i}
+										className="border-b-2 border-grey-100 flex justify-between py-6"
+									>
+										<span className="text-body-14-bold flex items-center gap-3">
+											<Image
+												className="rounded-full w-8 h-8"
+												src={trans.avatar}
+												alt="user"
+												width={32}
+												height={32}
+											/>
+											{trans.name}
+										</span>
+										<p className="flex flex-col items-end gap-2">
+											<span
+												className={`text-body-14-bold ${
+													sign === 1 && "text-green"
+												}`}
+											>
+												{sign === 1 ? (
+													<>+{formatMoney(trans.amount)}</>
+												) : (
+													<>{formatMoney(trans.amount)}</>
+												)}
+											</span>
+
+											<span className="text-grey-500 text-body-12">
+												{formatDate(trans.date)}
+											</span>
+										</p>
+									</li>
+								);
+							})}
+						</ul>
 					</div>
 				</div>
 				{/* ------------------- */}
 				<div>
 					{/* budgets */}
-					<div>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-						beatae suscipit quo minima dolor numquam, quam vero blanditiis nemo
-						provident illum consequatur harum rerum facilis?
+					<div className="bg-white rounded-xl p-5 my-6">
+						<SectionTitle title="Budgets" moreTitle="See Details" />
+						<BudgetChart data={data} />
 					</div>
 					{/* recurring bills */}
 					<div>
