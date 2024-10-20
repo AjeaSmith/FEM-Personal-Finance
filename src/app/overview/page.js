@@ -35,8 +35,12 @@ export default async function page() {
 			<section>
 				<div>
 					{/* Pots */}
-					<div className="bg-white p-5 rounded-xl">
-						<SectionTitle title="Pots" moreTitle="See Details" />
+					<div className="bg-white py-6 px-5 rounded-xl">
+						<SectionTitle
+							link="/budgets"
+							title="Pots"
+							linkTitle="See Details"
+						/>
 						<div>
 							{/* Total saved div */}
 							<div className="bg-beige-100 rounded-xl flex gap-4 items-center p-5 my-5">
@@ -77,13 +81,18 @@ export default async function page() {
 						</div>
 					</div>
 					{/* transactions */}
-					<div className="bg-white p-5 rounded-xl mt-4">
-						<SectionTitle title="Transactions" moreTitle="View All" />
+					<div className="bg-white py-6 px-5 rounded-xl mt-4">
+						<SectionTitle
+							link="/transactions"
+							title="Transactions"
+							linkTitle="View All"
+						/>
 						<ul>
-							{data.transactions.map((trans, i) => {
+							{data.transactions.slice(0, 5).map((trans, i) => {
 								const sign = Math.sign(trans.amount);
 								return (
 									<li
+										id="transactions"
 										key={i}
 										className="border-b-2 border-grey-100 flex justify-between py-6"
 									>
@@ -123,15 +132,35 @@ export default async function page() {
 				{/* ------------------- */}
 				<div>
 					{/* budgets */}
-					<div className="bg-white rounded-xl p-5 my-6">
-						<SectionTitle title="Budgets" moreTitle="See Details" />
+					<div className="bg-white rounded-xl  py-6 px-5 my-6">
+						<SectionTitle
+							link="/budgets"
+							title="Budgets"
+							linkTitle="See Details"
+						/>
 						<BudgetChart data={data} />
 					</div>
 					{/* recurring bills */}
-					<div>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam
-						explicabo molestias soluta fugit! Debitis quod maxime nemo sed
-						quisquam eum reiciendis ratione sint explicabo neque!
+					<div className="bg-white rounded-xl py-6 px-5 mb-16">
+						<SectionTitle
+							link="/recurring-bills"
+							title="Recurring Bills"
+							linkTitle="See Details"
+						/>
+						<ul className="flex flex-col gap-3">
+							<li className="flex justify-between bg-beige-100 rounded-lg py-5 px-4 border-l-4 border-green">
+								<span>Paid Bills</span>
+								<span>$190.00</span>
+							</li>
+							<li className="flex justify-between bg-beige-100 rounded-lg border-l-4 py-5 px-4 border-green">
+								<span>Total Upcoming</span>
+								<span>$194.98</span>
+							</li>
+							<li className="flex justify-between bg-beige-100 rounded-lg border-l-4 py-5 px-4 border-green">
+								<span>Due Soon</span>
+								<span>$59.98</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</section>

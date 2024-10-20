@@ -1,9 +1,14 @@
-function SectionTitle({ title, moreTitle }) {
+import Link from "next/link";
+
+function SectionTitle({ title, linkTitle, link }) {
 	return (
 		<div className="flex justify-between mb-5">
 			<span className="text-h2">{title}</span>
-			<span className="flex items-center text-grey-500 text-body-14">
-				{moreTitle}{" "}
+			<Link
+				href={link}
+				className="flex items-center text-grey-500 text-body-14"
+			>
+				{linkTitle}{" "}
 				<svg
 					className="ml-4"
 					fill="none"
@@ -17,7 +22,7 @@ function SectionTitle({ title, moreTitle }) {
 						fill="#696868"
 					/>
 				</svg>
-			</span>
+			</Link>
 		</div>
 	);
 }

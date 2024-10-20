@@ -24,6 +24,7 @@ body {
 	grid-template-columns: auto 1fr;
 }
 
-li:last-child {
+li#transactions:last-child {
 	border-bottom: 0;
+  padding-bottom: 0;
 }
