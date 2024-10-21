@@ -3,16 +3,17 @@ import Image from "next/image";
 
 export default function BudgetChart({ data }) {
 	return (
-		<div className="mt-7 mb-4">
+		<div className="mt-7 md:grid md:grid-flow-col xl:place-items-center">
 			<Image
-				className="w-[240px] h-[240px] mx-auto"
+				className=" mx-auto"
 				src="/assets/images/Chart.png"
 				alt="budget chart"
 				width={240}
 				height={240}
+				priority="true"
 			/>
 			{/* ---- Budget List goes here ---- */}
-			<section className="grid grid-cols-2 gap-4 mt-4">
+			<section className="grid grid-cols-2 gap-y-4 mt-4 md:grid-cols-1">
 				{data.budgets.map((budget, i) => (
 					<div className="flex" key={i}>
 						<div
