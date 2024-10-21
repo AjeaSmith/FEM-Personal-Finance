@@ -13,7 +13,7 @@ export default async function page() {
 		<section className="p-4 md:p-10">
 			<h1 className="text-h1 pb-8">Overview</h1>
 
-			<section className="mb-8 md:flex md:justify-between md:items-baseline md:gap-6">
+			<section className="mb-8 flex flex-col justify-between gap-y-6 md:flex-row md:items-baseline md:gap-x-6">
 				<Balance
 					data={data}
 					title="Current Balance"

@@ -24,7 +24,7 @@ export default function Pots({ data }) {
 						<p className="text-h1 mt-[11px]">$850</p>
 					</span>
 				</div>
-				<div className="text-body-12 text-grey-500 grid grid-cols-2 md:gap-y-4 md:place-content-center xl:place-self-center">
+				<div className="text-body-12 text-grey-500 grid grid-cols-2 gap-y-4 md:place-content-center xl:place-self-center">
 					{data.pots.slice(0, 4).map((pot, i) => (
 						<div key={i}>
 							<p
