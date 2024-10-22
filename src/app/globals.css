@@ -28,3 +28,11 @@ li#transactions:last-child {
 	border-bottom: 0;
 	padding-bottom: 0;
 }
+
+tbody tr:last-child {
+	border: none;
+}
+tbody tr td,
+thead tr th {
+	padding-block: 20px;
+}

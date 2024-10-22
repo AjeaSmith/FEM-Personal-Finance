@@ -1,26 +1,20 @@
+import { data } from "@/lib/data";
 import { formatDate } from "@/utils/formateDate";
 import { formatMoney } from "@/utils/formatMoney";
 import Image from "next/image";
-import SectionTitle from "../SectionTitle";
-
-export default function Transactions({ data }) {
+export default function TransactionsMobile() {
 	return (
-		<div className="bg-white py-6 px-5 rounded-xl mt-4">
-			<SectionTitle
-				link="/transactions"
-				title="Transactions"
-				linkTitle="View All"
-			/>
+		<div className="bg-white py-6 rounded-xl mt-4 md:hidden">
 			<ul>
-				{data.transactions.slice(0, 5).map((trans, i) => {
+				{data.transactions.map((trans, i) => {
 					const sign = Math.sign(trans.amount);
 					return (
 						<li
 							id="transactions"
 							key={i}
-							className="border-b-2 border-grey-100 flex justify-between py-6"
+							className="border-b-2 border-grey-100 flex justify-between py-4"
 						>
-							<span className="text-body-14-bold flex items-center gap-3">
+							<div className="flex items-center gap-3">
 								<Image
 									className="rounded-full w-8 h-8"
 									src={trans.avatar}
@@ -28,9 +22,14 @@ export default function Transactions({ data }) {
 									width={32}
 									height={32}
 								/>
-								{trans.name}
-							</span>
-							<p className="flex flex-col items-end gap-2">
+								<p className="flex flex-col gap-y-1">
+									<span className="text-body-14-bold">{trans.name}</span>
+									<span className="text-grey-500 text-body-12">
+										{trans.category}
+									</span>
+								</p>
+							</div>
+							<p className="flex flex-col items-end gap-1">
 								<span
 									className={`text-body-14-bold ${sign === 1 && "text-green"}`}
 								>

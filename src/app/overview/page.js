@@ -2,15 +2,12 @@ import Balance from "@/components/ui/Balance";
 import Budget from "@/components/ui/Budget";
 import Pots from "@/components/ui/Pots";
 import Recurring from "@/components/ui/Recurring";
-import Transactions from "@/components/ui/Transactions";
-import { promises as fs } from "fs";
+import { data } from "../../lib/data";
+import Transaction from "@/components/ui/overview/Transaction";
 
 export default async function page() {
-	const file = await fs.readFile(process.cwd() + "/src/data.json", "utf8");
-	const data = JSON.parse(file);
-
 	return (
-		<section className="p-4 md:p-10">
+		<section>
 			<h1 className="text-h1 pb-8">Overview</h1>
 
 			<section className="mb-8 flex flex-col justify-between gap-y-6 md:flex-row md:items-baseline md:gap-x-6">
@@ -34,9 +31,9 @@ export default async function page() {
 			<section className="xl:grid xl:grid-flow-col xl:gap-6">
 				<div>
 					<Pots data={data} />
-					<Transactions data={data} />
+					<Transaction />
 				</div>
-				{/* ------------------- */}
+
 				<div className="grid">
 					<Budget data={data} />
 					<Recurring />

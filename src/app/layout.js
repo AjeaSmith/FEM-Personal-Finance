@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
 				className={`${publicSans.className} bg-beige-100 text-grey-900 grid grid-cols-[1fr] xl:grid-cols-[auto,1fr] min-h-screen`}
 			>
 				<Navbar />
-				<main>{children}</main>
+				<main className="p-4 md:p-10">{children}</main>
 			</body>
 		</html>
 	);
