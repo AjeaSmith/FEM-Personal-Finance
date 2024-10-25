@@ -1,12 +1,11 @@
-import { data } from "@/lib/data";
 import { formatDate } from "@/utils/formateDate";
 import { formatMoney } from "@/utils/formatMoney";
 import Image from "next/image";
-export default function TransactionsMobile() {
+export default function TransactionsMobile({ data }) {
 	return (
 		<div className="bg-white py-6 rounded-xl mt-4 md:hidden">
 			<ul>
-				{data.transactions.map((trans, i) => {
+				{data.map((trans, i) => {
 					const sign = Math.sign(trans.amount);
 					return (
 						<li

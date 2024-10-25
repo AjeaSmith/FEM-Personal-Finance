@@ -1,8 +1,7 @@
-import { data } from "@/lib/data";
 import { formatDate } from "@/utils/formateDate";
 import { formatMoney } from "@/utils/formatMoney";
 import Image from "next/image";
-export default function TransactionsDesk() {
+export default function TransactionsDesk({ data }) {
 	return (
 		<table className="hidden md:table w-full table-auto">
 			<thead className="border-b-2 border-b-grey-100">
@@ -14,7 +13,7 @@ export default function TransactionsDesk() {
 				</tr>
 			</thead>
 			<tbody>
-				{data.transactions.map((trans, i) => {
+				{data.map((trans, i) => {
 					const sign = Math.sign(trans.amount);
 					return (
 						<tr key={i} className="border-b-2 border-b-grey-100">
