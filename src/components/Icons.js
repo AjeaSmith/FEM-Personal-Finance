@@ -1,3 +1,4 @@
+"use client";
 export function OverviewIcon({ className }) {
 	return (
 		<svg
@@ -85,9 +86,10 @@ export function RecurringIcon({ className }) {
 		</svg>
 	);
 }
-export function SortMobileIcon() {
+export function SortMobileIcon({ isOpenSort, setIsOpenSort }) {
 	return (
 		<svg
+			onClick={() => setIsOpenSort(!isOpenSort)}
 			fill="none"
 			height="15"
 			viewBox="0 0 16 15"
@@ -101,9 +103,10 @@ export function SortMobileIcon() {
 		</svg>
 	);
 }
-export function FilterMobileIcon() {
+export function FilterMobileIcon({ isOpenCategory, setIsOpenCategory }) {
 	return (
 		<svg
+			onClick={() => setIsOpenCategory(!isOpenCategory)}
 			fill="none"
 			height="16"
 			viewBox="0 0 18 16"

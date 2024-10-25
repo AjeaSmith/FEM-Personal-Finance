@@ -12,8 +12,6 @@ import { categories, sort } from "@/lib/constant";
 import Dropdown from "@/components/Dropdown";
 
 export default function SearchTransaction() {
-	// TODO: Responsivly show filter icons
-	// TODO: Sort filter
 	const [text, setText] = useState("");
 
 	const [isOpenCategory, setIsOpenCategory] = useState(false);
@@ -58,19 +56,19 @@ export default function SearchTransaction() {
 
 	return (
 		<section className="bg-white px-5 py-6 rounded-xl mb-16">
-			<div className="flex items-center justify-between gap-x-6">
-				<div className="flex flex-1 justify-between items-center border border-beige-500 px-5 py-3 rounded-lg md:flex-none">
+			<div className="flex items-center justify-between gap-x-6 md:mb-5">
+				<div className="flex flex-1 justify-between items-center border border-beige-500 px-5 py-3 rounded-lg md:flex-none md:w-[32%]">
 					<input
 						value={text}
 						onChange={(e) => setText(e.target.value)}
 						type="text"
 						placeholder="Search transaction"
-						className="border-none outline-none placeholder:text-beige-500"
+						className="w-full border-none outline-none placeholder:text-beige-500"
 					/>
 					<SearchIcon />
 				</div>
 				<div className="flex items-center justify-end gap-x-6">
-					<div className="hidden md:flex items-center gap-x-3">
+					<div className="flex items-center gap-x-3 md:gap-x-5">
 						<Dropdown
 							title="Sort by"
 							data={sort}
@@ -78,7 +76,12 @@ export default function SearchTransaction() {
 							isOpen={isOpenSort}
 							setIsOpen={setIsOpenSort}
 							setSelected={setSelectedSort}
-						/>
+						>
+							<SortMobileIcon
+								isOpenSort={isOpenSort}
+								setIsOpenSort={setIsOpenSort}
+							/>
+						</Dropdown>
 						<Dropdown
 							title="Category"
 							data={categories}
@@ -86,11 +89,12 @@ export default function SearchTransaction() {
 							isOpen={isOpenCategory}
 							setIsOpen={setIsOpenCategory}
 							setSelected={setSelectedCategory}
-						/>
-					</div>
-					<div className="flex justify-between items-center gap-x-4 md:hidden">
-						<SortMobileIcon />
-						<FilterMobileIcon />
+						>
+							<FilterMobileIcon
+								isOpenCategory={isOpenCategory}
+								setIsOpenCategory={setIsOpenCategory}
+							/>
+						</Dropdown>
 					</div>
 				</div>
 			</div>

@@ -36,3 +36,7 @@ tbody tr td,
 thead tr th {
 	padding-block: 20px;
 }
+
+#menu button:last-child{
+	border-bottom: none;
+}
