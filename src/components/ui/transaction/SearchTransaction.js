@@ -12,6 +12,8 @@ import { categories, sort } from "@/lib/constant";
 import Dropdown from "@/components/Dropdown";
 
 export default function SearchTransaction() {
+	// TODO: Responsivly show filter icons
+	// TODO: Sort filter
 	const [text, setText] = useState("");
 
 	const [isOpenCategory, setIsOpenCategory] = useState(false);
