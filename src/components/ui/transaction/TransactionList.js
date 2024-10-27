@@ -70,7 +70,7 @@ export default function TransactionList() {
 		setCurrentPage(page);
 	};
 	return (
-		<section className="bg-white px-5 py-6 rounded-xl mb-12">
+		<section className="bg-white px-5 py-6 rounded-xl mb-12 xl:mb-0">
 			<div className="flex items-center justify-between gap-x-6 md:mb-5">
 				<div className="flex flex-1 justify-between items-center border border-beige-500 px-5 py-3 rounded-lg md:flex-none md:w-[32%]">
 					<input
