@@ -5,7 +5,7 @@ export default function BudgetChart({ data }) {
 	return (
 		<div className="mt-7 md:grid md:grid-flow-col xl:place-items-center">
 			<Image
-				className=" mx-auto"
+				className="mx-auto"
 				src="/assets/images/Chart.png"
 				alt="budget chart"
 				width={240}

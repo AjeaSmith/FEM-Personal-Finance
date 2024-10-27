@@ -1,5 +1,5 @@
 import Balance from "@/components/ui/Balance";
-import Budget from "@/components/ui/Budget";
+import Budget from "@/components/ui/budget/Budget";
 import Pots from "@/components/ui/Pots";
 import Recurring from "@/components/ui/Recurring";
 import { data } from "../../lib/data";

@@ -12,7 +12,7 @@ export default function Navbar() {
 	return (
 		<section
 			className={`rounded-t-xl bg-grey-900 fixed bottom-0 h-[60px] p-0 w-full | md:h-[84px] | xl:rounded-r-xl xl:rounded-l-none xl:flex xl:flex-col xl:justify-between xl:py-8 xl:box-border ${
-				!open ? "xl:w-[88px]" : ""
+				!open ? "xl:w-[88px]" : "xl:w-[300px]"
 			} xl:duration-200 xl:sticky xl:top-0 xl:overflow-hidden xl:text-nowrap xl:h-screen`}
 		>
 			<nav>
@@ -37,7 +37,7 @@ export default function Navbar() {
 							>
 								<Link
 									href={item.link}
-									className={`flex items-center p-3 md:flex-col md:gap-2 xl:flex-row xl:gap-4`}
+									className={`flex items-center py-2 md:flex-col md:gap-2 xl:flex-row xl:gap-4`}
 								>
 									<Icon
 										className={`flex-shrink-0 ${

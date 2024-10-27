@@ -1,5 +1,6 @@
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "@/components/SectionTitle";
 import BudgetChart from "./BudgetChart";
+
 
 export default function Budget({ data }) {
 	return (
