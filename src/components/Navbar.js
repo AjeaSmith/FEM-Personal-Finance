@@ -11,7 +11,7 @@ export default function Navbar() {
 	const [open, setOpen] = useState(true);
 	return (
 		<section
-			className={`rounded-t-lg bg-grey-900 fixed bottom-0 h-[60px] p-0 w-full | md:h-[84px]  | xl:rounded-none xl:flex xl:flex-col xl:justify-between xl:py-8 xl:box-border ${
+			className={`rounded-t-xl bg-grey-900 fixed bottom-0 h-[60px] p-0 w-full | md:h-[84px] | xl:rounded-r-xl xl:rounded-l-none xl:flex xl:flex-col xl:justify-between xl:py-8 xl:box-border ${
 				!open ? "xl:w-[88px]" : ""
 			} xl:duration-200 xl:sticky xl:top-0 xl:overflow-hidden xl:text-nowrap xl:h-screen`}
 		>
