@@ -3,7 +3,7 @@ import { formatMoney } from "@/utils/formatMoney";
 import Image from "next/image";
 export default function TransactionsMobile({ data }) {
 	return (
-		<div className="bg-white py-6 rounded-xl mt-4 md:hidden">
+		<div className="bg-white py-6 rounded-xl md:hidden">
 			<ul>
 				{data.map((trans, i) => {
 					const sign = Math.sign(trans.amount);

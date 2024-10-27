@@ -10,8 +10,9 @@ import {
 } from "@/components/Icons";
 import { categories, sort } from "@/lib/constant";
 import Dropdown from "@/components/Dropdown";
+import PaginationControls from "./PaginationControls";
 
-export default function SearchTransaction() {
+export default function TransactionList() {
 	const [text, setText] = useState("");
 
 	const [isOpenCategory, setIsOpenCategory] = useState(false);
@@ -20,6 +21,11 @@ export default function SearchTransaction() {
 	const [selectedCategory, setSelectedCategory] = useState("All Transactions");
 	const [selectedSort, setSelectedSort] = useState("Latest");
 
+	// Calculate pagination
+	const [currentPage, setCurrentPage] = useState(1);
+	const itemsPerPage = 10;
+
+	// Filter and sort options for transactions
 	const filteredAndSortedData = useMemo(() => {
 		return data.transactions
 			.filter((val) => {
@@ -54,8 +60,17 @@ export default function SearchTransaction() {
 			});
 	}, [data.transactions, text, selectedCategory, selectedSort]);
 
+	// Get data for the current page
+	const paginatedData = useMemo(() => {
+		const startIndex = (currentPage - 1) * itemsPerPage;
+		return filteredAndSortedData.slice(startIndex, startIndex + itemsPerPage);
+	}, [currentPage, filteredAndSortedData]);
+
+	const handlePageChange = (page) => {
+		setCurrentPage(page);
+	};
 	return (
-		<section className="bg-white px-5 py-6 rounded-xl mb-16">
+		<section className="bg-white px-5 py-6 rounded-xl mb-12">
 			<div className="flex items-center justify-between gap-x-6 md:mb-5">
 				<div className="flex flex-1 justify-between items-center border border-beige-500 px-5 py-3 rounded-lg md:flex-none md:w-[32%]">
 					<input
@@ -68,7 +83,7 @@ export default function SearchTransaction() {
 					<SearchIcon />
 				</div>
 				<div className="flex items-center justify-end gap-x-6">
-					<div className="flex items-center gap-x-3 md:gap-x-5">
+					<div className="flex items-center gap-x-3 md:gap-x-4">
 						<Dropdown
 							title="Sort by"
 							data={sort}
@@ -99,8 +114,15 @@ export default function SearchTransaction() {
 				</div>
 			</div>
 
-			<TransactionsMobile data={filteredAndSortedData} />
-			<TransactionsDesk data={filteredAndSortedData} />
+			<TransactionsMobile data={paginatedData} />
+			<TransactionsDesk data={paginatedData} />
+
+			<PaginationControls
+				totalItems={filteredAndSortedData.length}
+				itemsPerPage={itemsPerPage}
+				currentPage={currentPage}
+				onPageChange={handlePageChange}
+			/>
 		</section>
 	);
 }
